@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://dg21wbfnwxr0f"]
+[gd_scene load_steps=56 format=3 uid="uid://dg21wbfnwxr0f"]
 
 [ext_resource type="Script" uid="uid://cbu2hsxgqj4gk" path="res://scripts/Player/player.gd" id="1_bruh7"]
 [ext_resource type="Texture2D" uid="uid://cs3ofvxlpb470" path="res://assets/sprites/player/herochar_attack_anim_strip_4(new).png" id="1_mdl7e"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://cdflcnimtcdi8" path="res://scripts/Player/fall.gd" id="14_p7iby"]
 [ext_resource type="Texture2D" uid="uid://bempppfxcj7jn" path="res://assets/sprites/etc/ligthTexture.png" id="15_0rnld"]
 [ext_resource type="Script" uid="uid://b6ys5p7jueq0y" path="res://scripts/Player/roll.gd" id="16_srp4u"]
+[ext_resource type="Script" uid="uid://ddag4u70k6arb" path="res://scripts/Player/attack.gd" id="17_jfpux"]
 
 [sub_resource type="Curve" id="Curve_0rnld"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -377,4 +378,8 @@ metadata/_custom_type_script = "uid://di26k6b8oxkkq"
 
 [node name="Roll" type="Node" parent="StateMachine"]
 script = ExtResource("16_srp4u")
+metadata/_custom_type_script = "uid://di26k6b8oxkkq"
+
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource("17_jfpux")
 metadata/_custom_type_script = "uid://di26k6b8oxkkq"
