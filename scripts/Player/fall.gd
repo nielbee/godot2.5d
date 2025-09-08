@@ -3,9 +3,10 @@ extends State
 @onready var sprite:AnimatedSprite2D = $"../../AnimatedSprite2D"
 @onready var body:CharacterBody2D = $"../.."
 @onready var statemachine:StateMachine = $".."
-
 const FALL_ACC_SPEED:float=200
 var acc:float=0
+
+
 
 func enter()->void:
 	sprite.play("fall")

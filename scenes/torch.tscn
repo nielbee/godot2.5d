@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://deqguf0burvvx"]
+[gd_scene load_steps=23 format=3 uid="uid://deqguf0burvvx"]
 
 [ext_resource type="Texture2D" uid="uid://bqfn0ada8ia1p" path="res://assets/sprites/etc/tiki_torch_props_strip_12.png" id="1_d4v33"]
 [ext_resource type="Script" uid="uid://c3o88eqwok6co" path="res://scripts/etc/torch.gd" id="1_o2tjn"]
 [ext_resource type="Texture2D" uid="uid://bempppfxcj7jn" path="res://assets/sprites/etc/ligthTexture.png" id="2_my26j"]
 [ext_resource type="AudioStream" uid="uid://ul8d0pu62cwy" path="res://assets/audio/fire-sound-334130.wav" id="4_r3k50"]
+[ext_resource type="LabelSettings" uid="uid://c4rclxveufk8v" path="res://resources/fonts.tres" id="5_ndh0a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_my26j"]
 atlas = ExtResource("1_d4v33")
@@ -158,6 +159,9 @@ _data = {
 &"default": SubResource("Animation_my26j")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3k50"]
+size = Vector2(6, 19)
+
 [node name="Torch" type="Node2D"]
 script = ExtResource("1_o2tjn")
 
@@ -192,6 +196,24 @@ volume_db = -10.295
 autoplay = true
 max_distance = 100.0
 
+[node name="interact" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interact"]
+visible = false
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_r3k50")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -28.0
+offset_top = -25.0
+offset_right = 29.0
+offset_bottom = -13.0
+text = "Interact"
+label_settings = ExtResource("5_ndh0a")
+
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
+[connection signal="body_entered" from="interact" to="." method="_on_interact_body_entered"]
+[connection signal="body_exited" from="interact" to="." method="_on_interact_body_exited"]

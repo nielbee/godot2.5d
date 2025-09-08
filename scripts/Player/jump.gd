@@ -22,7 +22,8 @@ func physics_update(delta) -> void:
 		statemachine.change_state("Fall")
 	
 func jump(delta):
-
+	if Input.is_action_just_pressed("attack"):
+		statemachine.change_state("Attack")
 	body.movement.x = Input.get_axis("ui_left","ui_right")*HORIZONTAL_AIR_SPEED
 	_airTime-= 2*delta
 	# print(_airTime)

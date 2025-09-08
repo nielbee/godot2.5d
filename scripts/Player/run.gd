@@ -21,6 +21,8 @@ func exit()->void:
 	y=0
 
 func update(_delta)->void:
+	if Input.is_action_just_pressed("attack"):
+		statemachine.change_state("Attack")
 	if (Input.is_action_just_pressed("jump")):
 		statemachine.change_state("Jump")
 	

@@ -15,3 +15,13 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 func _on_audio_stream_player_2d_finished() -> void:
 	$AudioStreamPlayer2D.pitch_scale = randf_range(0.3,1.6)
 	$AudioStreamPlayer2D.play()
+
+
+func _on_interact_body_entered(body: Node2D) -> void:
+	if body is Player:
+		$Label.show()
+
+
+func _on_interact_body_exited(body: Node2D) -> void:
+	if body is Player:
+		$Label.hide()
