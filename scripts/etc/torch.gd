@@ -1,5 +1,5 @@
 extends Node2D
-
+@export var text:="your text here"
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	$AnimationPlayer.play("default")
@@ -19,9 +19,9 @@ func _on_audio_stream_player_2d_finished() -> void:
 
 func _on_interact_body_entered(body: Node2D) -> void:
 	if body is Player:
-		$Label.show()
+		$TextBox.show()
 
 
 func _on_interact_body_exited(body: Node2D) -> void:
 	if body is Player:
-		$Label.hide()
+		$TextBox.hide()

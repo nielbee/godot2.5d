@@ -1,24 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8x333a7klcih"]
+[gd_scene load_steps=4 format=3 uid="uid://b8x333a7klcih"]
 
+[ext_resource type="Script" uid="uid://db1s676m7r456" path="res://scripts/etc/textbox.gd" id="1_0267t"]
 [ext_resource type="Texture2D" uid="uid://di3mf42x1r8pw" path="res://assets/sprites/UI/Thick outline/tile_0014.png" id="1_atju4"]
 [ext_resource type="LabelSettings" uid="uid://c4rclxveufk8v" path="res://resources/fonts.tres" id="2_var8l"]
 
-[node name="Control" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="TextBox" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_0267t")
 
 [node name="Control" type="Control" parent="."]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -248.0
-offset_right = 237.0
-offset_bottom = 200.0
+offset_left = -105.0
+offset_top = 11.0
+offset_right = 107.0
+offset_bottom = 47.0
 grow_horizontal = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Control"]
@@ -26,8 +24,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 64.0
-offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_atju4")
@@ -48,7 +44,7 @@ offset_right = -26.0
 offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+text = "Sed ut perspiciatis unde omnis "
 label_settings = ExtResource("2_var8l")
 horizontal_alignment = 1
 vertical_alignment = 1

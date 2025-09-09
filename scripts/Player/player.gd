@@ -5,6 +5,8 @@ class_name Player
 
 var movement:Vector2 = Vector2.ZERO
 var flipsprite := false
+@onready var lastFacing:=1
+
 
 func set_horizontal_move(x_value):
 	movement.x= x_value

@@ -34,8 +34,10 @@ func update(_delta)->void:
 		y= Input.get_axis("ui_left","ui_right")*hspeed
 		if Input.get_axis("ui_left","ui_right") < 0:
 			body.flipsprite = true
+			body.lastFacing =-1
 		else :
 			body.flipsprite = false
+			body.lastFacing = 1
 	body.set_horizontal_move(clamp(y,-MAX_MOVE_SPEED,MAX_MOVE_SPEED))
 
 

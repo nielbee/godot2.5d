@@ -19,6 +19,9 @@ func enter()->void:
 func physics_update(delta)->void:
 	if !body.is_on_floor():
 		fall.gravity(delta)
+	else:
+		if Input.is_action_just_pressed("roll"):
+			statemachine.change_state("BackDash")
 	
 	
 	if(Input.get_axis("ui_left","ui_right") != 0):

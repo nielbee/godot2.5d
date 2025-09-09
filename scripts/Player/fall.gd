@@ -12,7 +12,7 @@ func enter()->void:
 	sprite.play("fall")
 
 
-func gravity(delta):
+func gravity(_delta):
 	acc+=6
 	
 	body.movement.y = clamp(acc,0,FALL_ACC_SPEED)

@@ -3,8 +3,8 @@
 [ext_resource type="FontFile" uid="uid://bi1ntimm7fm1j" path="res://assets/fonts/yoster.ttf" id="1_v0gml"]
 
 [resource]
+line_spacing = 6.0
 font = ExtResource("1_v0gml")
-font_size = 12
-outline_color = Color(0.28485, 0.28485, 0.28485, 1)
-shadow_size = 26
-shadow_color = Color(0.255659, 0.255659, 0.255659, 0)
+font_size = 6
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0.0235294, 0.0235294, 0.0235294, 0.619608)
