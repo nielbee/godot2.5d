@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://c5jslil2ji7j3"]
+
+[ext_resource type="Script" uid="uid://b3e1qeff7yt86" path="res://scripts/Player/weapon/sword.gd" id="1_lgajy"]
+[ext_resource type="Texture2D" uid="uid://bdjwdawt8ulye" path="res://assets/sprites/player/sword_effect_strip_4(new).png" id="2_qm31o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n355p"]
+atlas = ExtResource("2_qm31o")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4ec8"]
+atlas = ExtResource("2_qm31o")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5whp"]
+atlas = ExtResource("2_qm31o")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1yp6w"]
+atlas = ExtResource("2_qm31o")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fnw8x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n355p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4ec8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5whp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1yp6w")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n355p"]
+size = Vector2(16, 13)
+
+[node name="Sword" type="Node2D"]
+script = ExtResource("1_lgajy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fnw8x")
+frame = 3
+frame_progress = 1.0
+
+[node name="hitbox_area" type="Area2D" parent="."]
+
+[node name="hitbox" type="CollisionShape2D" parent="hitbox_area"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_n355p")
+disabled = true

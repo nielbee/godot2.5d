@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://dg21wbfnwxr0f"]
+[gd_scene load_steps=59 format=3 uid="uid://dg21wbfnwxr0f"]
 
 [ext_resource type="Script" uid="uid://cbu2hsxgqj4gk" path="res://scripts/Player/player.gd" id="1_bruh7"]
 [ext_resource type="Texture2D" uid="uid://cs3ofvxlpb470" path="res://assets/sprites/player/herochar_attack_anim_strip_4(new).png" id="1_mdl7e"]
@@ -15,9 +15,11 @@
 [ext_resource type="Script" uid="uid://bqehismt0wu2s" path="res://scripts/Player/jump.gd" id="13_lkdrv"]
 [ext_resource type="Script" uid="uid://cdflcnimtcdi8" path="res://scripts/Player/fall.gd" id="14_p7iby"]
 [ext_resource type="Texture2D" uid="uid://bempppfxcj7jn" path="res://assets/sprites/etc/ligthTexture.png" id="15_0rnld"]
+[ext_resource type="Script" uid="uid://dnedh1yoq75wr" path="res://scripts/Player/run_faster.gd" id="15_sfy4j"]
 [ext_resource type="Script" uid="uid://b6ys5p7jueq0y" path="res://scripts/Player/roll.gd" id="16_srp4u"]
 [ext_resource type="Script" uid="uid://ddag4u70k6arb" path="res://scripts/Player/attack.gd" id="17_jfpux"]
 [ext_resource type="Script" uid="uid://b8ut4w7ourr57" path="res://scripts/Player/back_dash.gd" id="18_61ith"]
+[ext_resource type="PackedScene" uid="uid://c5jslil2ji7j3" path="res://scenes/player_weapons/sword.tscn" id="19_ebwui"]
 
 [sub_resource type="Curve" id="Curve_0rnld"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -313,6 +315,13 @@ animations = [{
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_bruh7")
 
+[node name="SwordLeft" parent="." instance=ExtResource("19_ebwui")]
+position = Vector2(-18, -2)
+scale = Vector2(-1, 1)
+
+[node name="SwordRigth" parent="." instance=ExtResource("19_ebwui")]
+position = Vector2(16, -2)
+
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(-2, 0)
 enabled = false
@@ -367,6 +376,10 @@ metadata/_custom_type_script = "uid://di26k6b8oxkkq"
 
 [node name="Run" type="Node" parent="StateMachine"]
 script = ExtResource("12_o4126")
+metadata/_custom_type_script = "uid://di26k6b8oxkkq"
+
+[node name="RunFaster" type="Node" parent="StateMachine"]
+script = ExtResource("15_sfy4j")
 metadata/_custom_type_script = "uid://di26k6b8oxkkq"
 
 [node name="Jump" type="Node" parent="StateMachine"]

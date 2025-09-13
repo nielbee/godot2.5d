@@ -5,7 +5,16 @@ extends State
 @onready var body:CharacterBody2D = $"../.."
 @onready var statemachine:StateMachine = $".."
 @onready var fall :=$"../Fall"
+@onready var sword:PlayerSword
+
 func enter()->void:
+	if body.lastFacing < 0:
+		sword = $"../../SwordLeft"
+	else:
+		sword = $"../../SwordRigth"
+	
+	
+	sword.attack()
 	sprite.play("attack")
 	await  sprite.animation_finished
 	statemachine.change_state("Idle")

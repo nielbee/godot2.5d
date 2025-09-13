@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dg21wbfnwxr0f" path="res://scenes/Player.tscn" id="2_4pmxj"]
 [ext_resource type="Texture2D" uid="uid://ccmc3w765c7uh" path="res://assets/sprites/bg_and_fg/bg_1.png" id="2_j2wbo"]
 [ext_resource type="TileSet" uid="uid://bt21o7jnaydnm" path="res://resources/tilemap.tres" id="3_3vd64"]
-[ext_resource type="PackedScene" uid="uid://deqguf0burvvx" path="res://scenes/torch.tscn" id="4_hqhvd"]
+[ext_resource type="PackedScene" uid="uid://deqguf0burvvx" path="res://scenes/props/torch.tscn" id="4_hqhvd"]
 [ext_resource type="Shader" uid="uid://bpgwkw123ckqd" path="res://gdshader/water.gdshader" id="7_t48sv"]
 
 [sub_resource type="Environment" id="Environment_j2wbo"]
