@@ -9,6 +9,8 @@ class_name PlayerSword
 signal attack_finished
 
 @onready var allowAttack:=true
+func _ready() -> void:
+	sprite.hide()
 func attack()->void:
 
 		#allowAttack = false

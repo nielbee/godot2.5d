@@ -8,35 +8,25 @@ extends State
 @export var airTime := 0.5
 var _airTime;
 var doDoubleJump:bool=false
-const JUMP_LIMIT = -160
-const HORIZONTAL_AIR_SPEED = 60
-#for add force when holding button
-var buttonHold:=0.0
-var maxButtonhold:=3.0
-const ADD_MODIFIER = 0.2
+const JUMP_LIMIT = -270
+const HORIZONTAL_AIR_SPEED = 130
 
 func enter()->void:
-	
-	sprite.play("jump")
-	_airTime = airTime
 	body.movement.y = JUMP_LIMIT
-
-func exit():
-	buttonHold=0
+	Debugging.log("long jump")
+	sprite.play("roll")
+	_airTime = airTime
+	
 	
 func physics_update(delta) -> void:
-	Debugging.log(str(buttonHold))
-	if Input.is_action_pressed("jump"):
-		buttonHold+=ADD_MODIFIER
-		buttonHold=clamp(buttonHold,0,maxButtonhold)
 	jump(delta)
-	if _airTime < 0 or Input.is_action_just_released("jump"):
+	if _airTime < 0:
 		statemachine.change_state("Fall")
 	
 func jump(delta):
 	if Input.is_action_just_pressed("attack"):
 		statemachine.change_state("Attack")
 	body.movement.x = Input.get_axis("ui_left","ui_right")*HORIZONTAL_AIR_SPEED
-	_airTime-= buttonHold*delta
+	_airTime-= 2*delta
 	# print(_airTime)
 	body.movement.y = JUMP_LIMIT*_airTime

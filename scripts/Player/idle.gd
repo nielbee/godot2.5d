@@ -7,6 +7,8 @@ extends State
 @onready var fall :=$"../Fall"
 
 func enter()->void:
+	#body.allowJump = true
+	Debugging.log("idle")
 	footparticles.emitting = false
 	body.set_horizontal_move(0)
 	sprite.play("idle")
@@ -26,7 +28,7 @@ func physics_update(delta)->void:
 	
 	if(Input.get_axis("ui_left","ui_right") != 0):
 		statemachine.change_state("Run")
-	if Input.is_action_pressed("jump") and body.is_on_floor():
+	if Input.is_action_pressed("jump") and body.can_jump():
 		statemachine.change_state("jump")
 	if Input.is_action_just_pressed("attack"):
 		statemachine.change_state("Attack")

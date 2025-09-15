@@ -14,6 +14,7 @@ const DURATION = 0.2
 
 # Called when the node enters the scene tree for the first time.
 func enter() -> void:
+	Debugging.log("back dash")
 	timer = Timer.new()
 	timer.one_shot = true
 	add_child(timer) # Add timer to the scene tree

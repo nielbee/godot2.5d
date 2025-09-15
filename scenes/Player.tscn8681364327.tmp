@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://dg21wbfnwxr0f"]
+[gd_scene load_steps=59 format=3 uid="uid://dg21wbfnwxr0f"]
 
 [ext_resource type="Script" uid="uid://cbu2hsxgqj4gk" path="res://scripts/Player/player.gd" id="1_bruh7"]
 [ext_resource type="Texture2D" uid="uid://cs3ofvxlpb470" path="res://assets/sprites/player/herochar_attack_anim_strip_4(new).png" id="1_mdl7e"]
@@ -20,7 +20,6 @@
 [ext_resource type="Script" uid="uid://ddag4u70k6arb" path="res://scripts/Player/attack.gd" id="17_jfpux"]
 [ext_resource type="Script" uid="uid://b8ut4w7ourr57" path="res://scripts/Player/back_dash.gd" id="18_61ith"]
 [ext_resource type="PackedScene" uid="uid://c5jslil2ji7j3" path="res://scenes/player_weapons/sword.tscn" id="19_ebwui"]
-[ext_resource type="Script" uid="uid://behfobiu1cp0e" path="res://scripts/Player/longjump.gd" id="21_gv3ic"]
 
 [sub_resource type="Curve" id="Curve_0rnld"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -287,7 +286,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"roll",
-"speed": 12.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -362,7 +361,9 @@ shape = SubResource("CapsuleShape2D_5q5h1")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.172549, 1, 1, 1)
 sprite_frames = SubResource("SpriteFrames_viqgg")
-animation = &"roll"
+animation = &"hit"
+frame = 2
+frame_progress = 1.0
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("10_d3wef")
@@ -383,6 +384,7 @@ metadata/_custom_type_script = "uid://di26k6b8oxkkq"
 
 [node name="Jump" type="Node" parent="StateMachine"]
 script = ExtResource("13_lkdrv")
+airTime = null
 metadata/_custom_type_script = "uid://di26k6b8oxkkq"
 
 [node name="Fall" type="Node" parent="StateMachine"]
@@ -399,8 +401,4 @@ metadata/_custom_type_script = "uid://di26k6b8oxkkq"
 
 [node name="BackDash" type="Node" parent="StateMachine"]
 script = ExtResource("18_61ith")
-metadata/_custom_type_script = "uid://di26k6b8oxkkq"
-
-[node name="Longjump" type="Node" parent="StateMachine"]
-script = ExtResource("21_gv3ic")
 metadata/_custom_type_script = "uid://di26k6b8oxkkq"

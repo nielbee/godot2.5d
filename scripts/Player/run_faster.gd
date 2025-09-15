@@ -6,12 +6,13 @@ extends State
 @onready var footparticles := $"../../runparticles"
 const INIT_MOVE_SPEED : float = 20
 const MOVE_ACC : float = 20
-const MAX_MOVE_SPEED : float = 90
+const MAX_MOVE_SPEED : float = 120
 
 var acc : float = 0.0
 var hspeed : float
 var y :float
 func enter()->void:
+	Debugging.log("run fast")
 	footparticles.emitting = true
 	sprite.play("run")
 
@@ -24,9 +25,9 @@ func update(_delta)->void:
 	if Input.is_action_just_pressed("attack"):
 		statemachine.change_state("Attack")
 	if (Input.is_action_just_pressed("jump")):
-		statemachine.change_state("Jump")
+		statemachine.change_state("longJump")
 	
-	if(Input.get_axis("ui_left","ui_right") == 0):
+	if(Input.is_action_just_released("roll")):
 		statemachine.change_state("Idle")
 	else:
 		acc += MOVE_ACC

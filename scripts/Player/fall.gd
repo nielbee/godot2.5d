@@ -9,6 +9,7 @@ var acc:float=0
 
 
 func enter()->void:
+	Debugging.log("fall")
 	sprite.play("fall")
 
 

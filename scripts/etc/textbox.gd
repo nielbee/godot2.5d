@@ -1,4 +1,4 @@
 extends CanvasLayer
 
 func set_text(text):
-	$Control/NinePatchRect/Label.text = text
+	$windowSize/textbox/NinePatchRect/Label.text = text

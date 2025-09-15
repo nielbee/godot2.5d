@@ -8,6 +8,7 @@ extends State
 const ROLL_SPEED = 150
 
 func enter()->void:
+	Debugging.log("roll")
 	body.movement.x = Input.get_axis("ui_left","ui_right")*ROLL_SPEED
 	sprite.play("roll")
 	await sprite.animation_finished

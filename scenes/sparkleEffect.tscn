@@ -108,4 +108,4 @@ animations = [{
 
 [node name="sparkle" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_ywas0")
-animation = &"landsparkle"
+animation = &"swordHit"

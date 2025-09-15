@@ -12,6 +12,8 @@ var acc : float = 0.0
 var hspeed : float
 var y :float
 func enter()->void:
+	
+	Debugging.log("run")
 	footparticles.emitting = true
 	sprite.play("run")
 
@@ -21,6 +23,8 @@ func exit()->void:
 	y=0
 
 func update(_delta)->void:
+	if Input.is_action_pressed("roll"):
+		statemachine.change_state("RunFaster")
 	if Input.is_action_just_pressed("attack"):
 		statemachine.change_state("Attack")
 	if (Input.is_action_just_pressed("jump")):
