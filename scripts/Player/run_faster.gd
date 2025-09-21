@@ -27,6 +27,9 @@ func update(_delta)->void:
 	if (Input.is_action_just_pressed("jump")):
 		statemachine.change_state("longJump")
 	
+	if Input.get_axis("ui_left","ui_right") == 0:
+		statemachine.change_state("Idle")
+	
 	if(Input.is_action_just_released("roll")):
 		statemachine.change_state("Idle")
 	else:

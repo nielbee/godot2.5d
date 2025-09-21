@@ -1,0 +1,114 @@
+[gd_scene load_steps=17 format=3 uid="uid://drsk876ub6lfd"]
+
+[ext_resource type="Texture2D" uid="uid://dgds7ibttv31p" path="res://assets/sprites/enemies/fly/blue_fly_attack_anim_srip_3.png" id="1_crhro"]
+[ext_resource type="Script" uid="uid://cbu2hsxgqj4gk" path="res://scripts/Player/player.gd" id="1_p4ikt"]
+[ext_resource type="Texture2D" uid="uid://dywe4figt827i" path="res://assets/sprites/enemies/fly/blue_fly_hit_anim_strip_3.png" id="2_p4ikt"]
+[ext_resource type="Texture2D" uid="uid://demqxsvhbe4wd" path="res://assets/sprites/enemies/fly/blue_fly_idle_or_flying_anim_strip_3.png" id="3_88f36"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p4ikt"]
+radius = 4.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ovid"]
+atlas = ExtResource("1_crhro")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fad1s"]
+atlas = ExtResource("1_crhro")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6mc8"]
+atlas = ExtResource("1_crhro")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssgq1"]
+atlas = ExtResource("2_p4ikt")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3ehq"]
+atlas = ExtResource("2_p4ikt")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7j3f"]
+atlas = ExtResource("2_p4ikt")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htspw"]
+atlas = ExtResource("3_88f36")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4i26"]
+atlas = ExtResource("3_88f36")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_reum0"]
+atlas = ExtResource("3_88f36")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6f10d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ovid")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fad1s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6mc8")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssgq1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3ehq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7j3f")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htspw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4i26")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_reum0")
+}],
+"loop": true,
+"name": &"idle_fly",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_88f36"]
+radius = 3.1622777
+
+[node name="enemy_bluefly" type="Node2D" groups=["Enemies_group"]]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_p4ikt")
+metadata/_custom_type_script = "uid://cbu2hsxgqj4gk"
+
+[node name="hurtbox" type="Area2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/hurtbox"]
+shape = SubResource("CircleShape2D_p4ikt")
+debug_color = Color(0.81059515, 0.38958162, 0.36608043, 0.41960785)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = SubResource("SpriteFrames_6f10d")
+animation = &"idle_fly"
+autoplay = "idle_fly"
+frame_progress = 0.561088
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_88f36")

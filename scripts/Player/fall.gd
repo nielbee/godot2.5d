@@ -7,7 +7,6 @@ const FALL_ACC_SPEED:float=200
 var acc:float=0
 
 
-
 func enter()->void:
 	Debugging.log("fall")
 	sprite.play("fall")
@@ -24,4 +23,6 @@ func update(delta)->void:
 		acc = 0
 		statemachine.change_state("Idle")
 	else:
+		if Input.is_action_just_pressed("attack"):
+			statemachine.change_state("Attack")
 		gravity(delta)

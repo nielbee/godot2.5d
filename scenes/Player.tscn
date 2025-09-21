@@ -349,6 +349,7 @@ occluder = SubResource("OccluderPolygon2D_0rnld")
 current = true
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
+visible = false
 color = Color(0.141176, 1, 1, 1)
 energy = 7.23
 texture = ExtResource("15_0rnld")

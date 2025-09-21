@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://pdmqxhdjhjcq"]
+[gd_scene load_steps=17 format=3 uid="uid://pdmqxhdjhjcq"]
 
 [ext_resource type="Texture2D" uid="uid://by1g6b8my6xrr" path="res://assets/sprites/bg_and_fg/background.png" id="1_j2wbo"]
 [ext_resource type="PackedScene" uid="uid://e3fh820b1e61" path="res://scenes/coin.tscn" id="1_lgrwq"]
@@ -7,7 +7,6 @@
 [ext_resource type="TileSet" uid="uid://bt21o7jnaydnm" path="res://resources/tilemap.tres" id="3_3vd64"]
 [ext_resource type="PackedScene" uid="uid://deqguf0burvvx" path="res://scenes/props/torch.tscn" id="4_hqhvd"]
 [ext_resource type="Shader" uid="uid://bpgwkw123ckqd" path="res://gdshader/water.gdshader" id="7_t48sv"]
-[ext_resource type="PackedScene" uid="uid://ouwvd6qffxly" path="res://scenes/ball.tscn" id="8_svo7y"]
 
 [sub_resource type="Environment" id="Environment_j2wbo"]
 background_mode = 3
@@ -49,9 +48,9 @@ frequency = 0.0203
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_svo7y"]
 width = 1000
 height = 1000
+noise = SubResource("FastNoiseLite_t48sv")
 seamless = true
 seamless_blend_skirt = 0.235
-noise = SubResource("FastNoiseLite_t48sv")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_svo7y"]
 shader = ExtResource("7_t48sv")
@@ -169,6 +168,3 @@ amount = 300
 sub_emitter = NodePath(".")
 lifetime = 11.53
 process_material = SubResource("ParticleProcessMaterial_svo7y")
-
-[node name="ball" parent="." instance=ExtResource("8_svo7y")]
-position = Vector2(142, 164)
