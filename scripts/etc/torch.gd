@@ -1,6 +1,6 @@
 extends Node2D
 @export var text:="your text here"
-
+@export var dialogFile : Resource
 
 func _ready() -> void:
 	$TextBox.set_text(text)
@@ -24,6 +24,7 @@ func _on_audio_stream_player_2d_finished() -> void:
 func _on_interact_body_entered(body: Node2D) -> void:
 	if body is Player:
 		$TextBox.show()
+	DialogueManager.show_dialogue_balloon(dialogFile)
 
 
 func _on_interact_body_exited(body: Node2D) -> void:

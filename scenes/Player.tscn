@@ -313,7 +313,8 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_layer = 2
 script = ExtResource("1_bruh7")
 
 [node name="SwordLeft" parent="." instance=ExtResource("19_ebwui")]
@@ -405,3 +406,5 @@ metadata/_custom_type_script = "uid://di26k6b8oxkkq"
 [node name="Longjump" type="Node" parent="StateMachine"]
 script = ExtResource("21_gv3ic")
 metadata/_custom_type_script = "uid://di26k6b8oxkkq"
+
+[node name="Camera2D" type="Camera2D" parent="."]

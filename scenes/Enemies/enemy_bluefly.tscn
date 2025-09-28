@@ -1,9 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://drsk876ub6lfd"]
+[gd_scene load_steps=22 format=3 uid="uid://drsk876ub6lfd"]
 
+[ext_resource type="Script" uid="uid://dfpgkdqb7bdxs" path="res://scenes/Enemies/enemy_bluefly.gd" id="1_7ovid"]
 [ext_resource type="Texture2D" uid="uid://dgds7ibttv31p" path="res://assets/sprites/enemies/fly/blue_fly_attack_anim_srip_3.png" id="1_crhro"]
-[ext_resource type="Script" uid="uid://cbu2hsxgqj4gk" path="res://scripts/Player/player.gd" id="1_p4ikt"]
 [ext_resource type="Texture2D" uid="uid://dywe4figt827i" path="res://assets/sprites/enemies/fly/blue_fly_hit_anim_strip_3.png" id="2_p4ikt"]
 [ext_resource type="Texture2D" uid="uid://demqxsvhbe4wd" path="res://assets/sprites/enemies/fly/blue_fly_idle_or_flying_anim_strip_3.png" id="3_88f36"]
+[ext_resource type="Script" uid="uid://cvwoe4betsjwt" path="res://scripts/state_machine.gd" id="5_7ovid"]
+[ext_resource type="Script" uid="uid://d1qu1mx6x34ne" path="res://scenes/Enemies/bluefly/patrolling.gd" id="6_fad1s"]
+[ext_resource type="Script" uid="uid://c51rumuqfc2nk" path="res://scenes/Enemies/bluefly/idle.gd" id="7_fad1s"]
+[ext_resource type="Script" uid="uid://di26k6b8oxkkq" path="res://scripts/state.gd" id="8_j6mc8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p4ikt"]
 radius = 4.0
@@ -92,13 +96,19 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_88f36"]
 radius = 3.1622777
 
-[node name="enemy_bluefly" type="Node2D" groups=["Enemies_group"]]
+[sub_resource type="CircleShape2D" id="CircleShape2D_fad1s"]
+radius = 33.06055
 
-[node name="Player" type="CharacterBody2D" parent="."]
-script = ExtResource("1_p4ikt")
-metadata/_custom_type_script = "uid://cbu2hsxgqj4gk"
+[node name="enemy_bluefly" type="Node2D" groups=["Enemies_group"]]
+script = ExtResource("1_7ovid")
+
+[node name="Player" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 17
 
 [node name="hurtbox" type="Area2D" parent="Player"]
+collision_layer = 16
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/hurtbox"]
 shape = SubResource("CircleShape2D_p4ikt")
@@ -112,3 +122,27 @@ frame_progress = 0.561088
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("CircleShape2D_88f36")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_7ovid")
+initial_state = NodePath("idle")
+metadata/_custom_type_script = "uid://cvwoe4betsjwt"
+
+[node name="chase" type="Node" parent="StateMachine"]
+script = ExtResource("6_fad1s")
+metadata/_custom_type_script = "uid://di26k6b8oxkkq"
+
+[node name="idle" type="Node" parent="StateMachine"]
+script = ExtResource("7_fad1s")
+metadata/_custom_type_script = "uid://di26k6b8oxkkq"
+
+[node name="hit" type="Node" parent="StateMachine"]
+script = ExtResource("8_j6mc8")
+metadata/_custom_type_script = "uid://di26k6b8oxkkq"
+
+[node name="detectPlayerArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detectPlayerArea"]
+shape = SubResource("CircleShape2D_fad1s")

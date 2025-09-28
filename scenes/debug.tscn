@@ -1,11 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://pdmqxhdjhjcq"]
+[gd_scene load_steps=16 format=3 uid="uid://pdmqxhdjhjcq"]
 
+[ext_resource type="Script" uid="uid://bexuajfa3ivkq" path="res://scenes/level/scripts/debug.gd" id="1_5ph7u"]
 [ext_resource type="Texture2D" uid="uid://by1g6b8my6xrr" path="res://assets/sprites/bg_and_fg/background.png" id="1_j2wbo"]
 [ext_resource type="PackedScene" uid="uid://e3fh820b1e61" path="res://scenes/coin.tscn" id="1_lgrwq"]
-[ext_resource type="PackedScene" uid="uid://dg21wbfnwxr0f" path="res://scenes/Player.tscn" id="2_4pmxj"]
 [ext_resource type="Texture2D" uid="uid://ccmc3w765c7uh" path="res://assets/sprites/bg_and_fg/bg_1.png" id="2_j2wbo"]
 [ext_resource type="TileSet" uid="uid://bt21o7jnaydnm" path="res://resources/tilemap.tres" id="3_3vd64"]
+[ext_resource type="PackedScene" uid="uid://drsk876ub6lfd" path="res://scenes/Enemies/enemy_bluefly.tscn" id="3_svo7y"]
 [ext_resource type="PackedScene" uid="uid://deqguf0burvvx" path="res://scenes/props/torch.tscn" id="4_hqhvd"]
+[ext_resource type="Resource" uid="uid://bhcemubebrw71" path="res://dialog/tutorial.dialogue" id="5_5ph7u"]
 [ext_resource type="Shader" uid="uid://bpgwkw123ckqd" path="res://gdshader/water.gdshader" id="7_t48sv"]
 
 [sub_resource type="Environment" id="Environment_j2wbo"]
@@ -70,24 +72,8 @@ shader_parameter/offSetSpeed = Vector2(0, 0.1)
 shader_parameter/backGroundDirX = -0.1
 shader_parameter/backGroundDirY = -0.1
 
-[sub_resource type="Curve" id="Curve_svo7y"]
-_limits = [-200.0, 200.0, 0.0, 1.0]
-_data = [Vector2(0, 105.618), 0.0, 0.0, 0, 0, Vector2(1, -92.1348), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_5ph7u"]
-curve = SubResource("Curve_svo7y")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_svo7y"]
-particle_flag_disable_z = true
-emission_shape_scale = Vector3(2000, 1, 1)
-emission_shape = 1
-emission_sphere_radius = 1.0
-inherit_velocity_ratio = 1.0
-gravity = Vector3(-30, 98, 0)
-linear_accel_curve = SubResource("CurveTexture_5ph7u")
-
-[node name="Node2D" type="Node2D"]
+[node name="level" type="Node2D"]
+script = ExtResource("1_5ph7u")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -116,24 +102,16 @@ offset_bottom = 368.0
 texture = ExtResource("2_j2wbo")
 stretch_mode = 1
 
-[node name="Player" parent="." instance=ExtResource("2_4pmxj")]
-position = Vector2(124, 96)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(0, 2)
-offset = Vector2(0, -60)
-limit_left = 100
-limit_top = 100
-position_smoothing_enabled = true
-
 [node name="Props" type="Node" parent="."]
 
 [node name="boardWelcome" parent="Props" instance=ExtResource("4_hqhvd")]
-position = Vector2(151, 164)
+position = Vector2(203, 165)
 text = "Hi, Welcome to my portofolio.~ im creating this using godot. ~feel free to look around"
+dialogFile = ExtResource("5_5ph7u")
 
 [node name="boardName" parent="Props" instance=ExtResource("4_hqhvd")]
 position = Vector2(350, 164)
+dialogFile = ExtResource("5_5ph7u")
 
 [node name="pickups" type="Node" parent="."]
 
@@ -156,15 +134,20 @@ blend_mode = 1
 
 [node name="water" type="ColorRect" parent="WorldEnvironment"]
 material = SubResource("ShaderMaterial_svo7y")
-offset_left = -9.0
-offset_top = 188.0
-offset_right = 619.0
-offset_bottom = 237.0
+offset_left = 52.0
+offset_top = 180.0
+offset_right = 680.0
+offset_bottom = 263.0
 color = Color(0.420899, 0.568506, 1, 1)
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="WorldEnvironment"]
-position = Vector2(320, 90)
-amount = 300
-sub_emitter = NodePath(".")
-lifetime = 11.53
-process_material = SubResource("ParticleProcessMaterial_svo7y")
+[node name="spawnPosition" type="Node2D" parent="."]
+position = Vector2(131, 92)
+
+[node name="enemies" type="Node" parent="."]
+
+[node name="enemy_bluefly" parent="." instance=ExtResource("3_svo7y")]
+position = Vector2(240, 136)
+MOVE_SPEED = 50
+
+[node name="enemy_bluefly2" parent="." instance=ExtResource("3_svo7y")]
+position = Vector2(333, 140)
