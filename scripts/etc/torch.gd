@@ -22,9 +22,10 @@ func _on_audio_stream_player_2d_finished() -> void:
 
 
 func _on_interact_body_entered(body: Node2D) -> void:
-	if body is Player:
-		$TextBox.show()
-	DialogueManager.show_dialogue_balloon(dialogFile)
+	#if body is Player:
+		#$TextBox.show()
+	#DialogueManager.show_dialogue_balloon(dialogFile)
+	pass
 
 
 func _on_interact_body_exited(body: Node2D) -> void:

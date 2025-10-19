@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 
 Debugging="*res://scenes/UI/debugging.tscn"
 MyPlayer="*res://scenes/Player.tscn"
-DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [dialogue_manager]
 
@@ -42,10 +41,6 @@ window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/aspect="ignore"
 window/stretch/scale=3.9
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 [global_group]
 
