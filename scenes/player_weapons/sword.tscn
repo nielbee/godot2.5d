@@ -50,11 +50,11 @@ sprite_frames = SubResource("SpriteFrames_fnw8x")
 frame = 3
 frame_progress = 1.0
 
-[node name="hitbox_area" type="Area2D" parent="."]
+[node name="player_sword" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 32
 
-[node name="hitbox" type="CollisionShape2D" parent="hitbox_area"]
+[node name="hitbox" type="CollisionShape2D" parent="player_sword"]
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_n355p")
 disabled = true

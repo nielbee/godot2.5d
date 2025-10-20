@@ -6,7 +6,7 @@ extends State
 @onready var EnemyBluefly = $"../.."
 
 func enter()->void:
-	pass
+	sprite.play("idle_fly")
 func exit()->void:
 	pass
 func update(delta:float)->void:

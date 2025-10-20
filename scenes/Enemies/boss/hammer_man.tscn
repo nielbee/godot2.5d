@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cerl5fy3478g"]
+
+[ext_resource type="SpriteFrames" uid="uid://ewgrkjolsy00" path="res://scenes/res/hammer_man_anim.tres" id="1_im5gs"]
+
+[node name="hammer_man" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_im5gs")
+animation = &"new_animation"
+frame = 17
+frame_progress = 1.0

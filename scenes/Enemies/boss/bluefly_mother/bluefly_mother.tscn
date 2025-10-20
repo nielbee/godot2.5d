@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpxe7ulwt5fto"]
+
+[ext_resource type="SpriteFrames" uid="uid://td04silrv2ru" path="res://scenes/res/enemy_bluefly_anim.tres" id="1_8btso"]
+
+[node name="bluefly_mother" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = ExtResource("1_8btso")
+animation = &"attack"

@@ -2,8 +2,8 @@ extends Node2D
 class_name PlayerSword
 
 
-@onready var hitbox_area2d:=$hitbox_area
-@onready var hitbox_collider:=$hitbox_area/hitbox
+@onready var hitbox_area2d:=$player_sword
+@onready var hitbox_collider:=$player_sword/hitbox
 @onready var sprite:=$AnimatedSprite2D
 
 signal attack_finished
