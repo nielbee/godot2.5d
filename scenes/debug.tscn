@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://pdmqxhdjhjcq"]
+[gd_scene load_steps=17 format=3 uid="uid://pdmqxhdjhjcq"]
 
 [ext_resource type="Script" uid="uid://bexuajfa3ivkq" path="res://scenes/level/scripts/debug.gd" id="1_5ph7u"]
 [ext_resource type="Texture2D" uid="uid://by1g6b8my6xrr" path="res://assets/sprites/bg_and_fg/background.png" id="1_j2wbo"]
@@ -9,25 +9,24 @@
 [ext_resource type="PackedScene" uid="uid://deqguf0burvvx" path="res://scenes/props/torch.tscn" id="4_hqhvd"]
 [ext_resource type="Resource" uid="uid://bhcemubebrw71" path="res://dialog/tutorial.dialogue" id="5_5ph7u"]
 [ext_resource type="Shader" uid="uid://bpgwkw123ckqd" path="res://gdshader/water.gdshader" id="7_t48sv"]
+[ext_resource type="PackedScene" uid="uid://bpxe7ulwt5fto" path="res://scenes/Enemies/boss/bluefly_mother/bluefly_mother.tscn" id="10_o7ao6"]
 
 [sub_resource type="Environment" id="Environment_j2wbo"]
 background_mode = 3
-background_energy_multiplier = 0.0
+background_energy_multiplier = 2.58
 background_canvas_max_layer = 5
-ssr_enabled = true
-ssil_enabled = true
 ssil_radius = 5.24
 ssil_intensity = 3.59
 glow_enabled = true
 glow_normalized = true
 glow_intensity = 0.2
-glow_strength = 1.18
-glow_mix = 0.565
-glow_bloom = 0.23
+glow_strength = 1.75
+glow_mix = 0.0
+glow_bloom = 0.45
 glow_blend_mode = 4
 glow_hdr_threshold = 0.21
 glow_hdr_scale = 0.29
-glow_hdr_luminance_cap = 0.1
+glow_hdr_luminance_cap = 0.0
 glow_map_strength = 0.0
 volumetric_fog_density = 1.0
 volumetric_fog_emission_energy = 1024.0
@@ -134,10 +133,10 @@ blend_mode = 1
 
 [node name="water" type="ColorRect" parent="WorldEnvironment"]
 material = SubResource("ShaderMaterial_svo7y")
-offset_left = 52.0
-offset_top = 180.0
-offset_right = 680.0
-offset_bottom = 263.0
+offset_left = 48.0
+offset_top = 194.0
+offset_right = 676.0
+offset_bottom = 277.0
 color = Color(0.420899, 0.568506, 1, 1)
 
 [node name="spawnPosition" type="Node2D" parent="."]
@@ -151,3 +150,6 @@ MOVE_SPEED = 50
 
 [node name="enemy_bluefly2" parent="." instance=ExtResource("3_svo7y")]
 position = Vector2(333, 140)
+
+[node name="bluefly_mother" parent="." instance=ExtResource("10_o7ao6")]
+position = Vector2(182, 144)

@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
 class_name Player
-
+signal is_jumping
+signal is_melee
+signal is_melee_finished
 var jump_released: bool = true
 
 

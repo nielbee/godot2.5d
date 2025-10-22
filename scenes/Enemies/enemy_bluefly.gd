@@ -2,6 +2,7 @@ extends Node2D
 
 var _position_last_frame := Vector2()
 var _cardinal_direction = 0
+@onready var sprite := $Player/AnimatedSprite2D
 @onready var state_machine := $StateMachine
 @export var health := 100
 @export var MOVE_SPEED := 30
@@ -12,14 +13,20 @@ func _process(_delta):
 	var motion = position - _position_last_frame
 	if motion.length() > 0.0001:
 		_cardinal_direction = int(4.0 * (motion.rotated(PI / 4.0).angle() + PI) / TAU)
-		#match _cardinal_direction:
-			#0: print("West")
-			#1: print("North")
-			#2: print("East")
-			#3: print("South")
+		match _cardinal_direction:
+			0: 
+				print("West")
+				sprite.flip_h = false
+			1: print("North")
+			2: 
+				print("East")
+				sprite.flip_h = true
+			3: print("South")
 	_position_last_frame = position
 	
 	if health < 1 :
+		sprite.play("hit")
+		await sprite.animation_finished
 		queue_free() 
 #		destroy if health below 0
 

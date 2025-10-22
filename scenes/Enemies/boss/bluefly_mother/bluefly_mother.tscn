@@ -1,10 +1,57 @@
-[gd_scene load_steps=2 format=3 uid="uid://bpxe7ulwt5fto"]
+[gd_scene load_steps=8 format=3 uid="uid://bpxe7ulwt5fto"]
 
 [ext_resource type="SpriteFrames" uid="uid://td04silrv2ru" path="res://scenes/res/enemy_bluefly_anim.tres" id="1_8btso"]
+[ext_resource type="Script" uid="uid://c2rb1n74mw66p" path="res://scenes/Enemies/boss/bluefly_mother/bluefly_mother.gd" id="1_pc1xs"]
+[ext_resource type="Script" uid="uid://cvwoe4betsjwt" path="res://scripts/state_machine.gd" id="2_of5pv"]
+[ext_resource type="Script" uid="uid://di26k6b8oxkkq" path="res://scripts/state.gd" id="3_pc1xs"]
+[ext_resource type="Script" uid="uid://do5xsgk33w1ay" path="res://scenes/Enemies/boss/bluefly_mother/phase_1_pos_todash.gd" id="4_vleqk"]
 
-[node name="bluefly_mother" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pc1xs"]
+size = Vector2(101, 16)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(4, 4)
+[sub_resource type="CircleShape2D" id="CircleShape2D_8btso"]
+radius = 7.071068
+
+[node name="bluefly_mother" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_pc1xs")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, 0)
+scale = Vector2(2, 2)
 sprite_frames = ExtResource("1_8btso")
-animation = &"attack"
+animation = &"idle_fly"
+autoplay = "idle_fly"
+frame_progress = 0.104794115
+
+[node name="areaDetectPlayerVertical" type="Area2D" parent="sprite"]
+position = Vector2(-0.5, 0)
+scale = Vector2(0.25, 0.25)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sprite/areaDetectPlayerVertical"]
+position = Vector2(-51.5, -11)
+shape = SubResource("RectangleShape2D_pc1xs")
+
+[node name="body" type="CollisionShape2D" parent="." groups=["Enemies_group"]]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_8btso")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_of5pv")
+initial_state = NodePath("phase1PosTodash")
+metadata/_custom_type_script = "uid://cvwoe4betsjwt"
+
+[node name="phase1PosTodash" type="Node" parent="StateMachine"]
+script = ExtResource("4_vleqk")
+metadata/_custom_type_script = "uid://di26k6b8oxkkq"
+
+[node name="dash_attack" type="Node" parent="StateMachine"]
+script = ExtResource("3_pc1xs")
+metadata/_custom_type_script = "uid://di26k6b8oxkkq"
+
+[node name="knockdown" type="Node" parent="StateMachine"]
+script = ExtResource("3_pc1xs")
+metadata/_custom_type_script = "uid://di26k6b8oxkkq"

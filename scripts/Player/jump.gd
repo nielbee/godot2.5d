@@ -16,7 +16,7 @@ var maxButtonhold:=3.0
 const ADD_MODIFIER = 0.2
 
 func enter()->void:
-	
+	body.emit_signal("is_jumping")
 	sprite.play("jump")
 	_airTime = airTime
 	body.movement.y = JUMP_LIMIT

@@ -8,6 +8,7 @@ extends State
 @onready var sword:PlayerSword
 
 func enter()->void:
+	body.emit_signal("is_melee")
 	Debugging.log("attack")
 	if body.lastFacing < 0:
 		sword = $"../../SwordLeft"
@@ -25,3 +26,6 @@ func enter()->void:
 func physcis_update(delta)->void:
 		if !body.is_on_floor():
 			fall.gravity(delta)
+
+func exit()->void:
+	body.emit_signal("is_melee_finished")
